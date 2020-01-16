@@ -1,8 +1,16 @@
 li.dev-item {
-    background: #FFF;
+    background: #fff;
     box-shadow:  0 0 14px 0 rgba(0, 0, 0, 0.02);
     border-radius: 2px;
     padding: 20px;
+}
+
+.div-opcoes {
+    background: #fff;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
 
 li.dev-item header{
@@ -40,12 +48,16 @@ li.dev-item p {
     margin: 10px 0;
 }
 
-li.dev-item a {
+.div-opcao a {
     color: #8e4dff;
     font-size: 14px;
     text-decoration: none;
 }
 
-li.dev-item a:hover {
+.div-opcao {
+    background: #fff;
+}
+
+.div-opcao a:hover {
     color: #5a2ea6;
 }
