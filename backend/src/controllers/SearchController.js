@@ -27,5 +27,17 @@ module.exports = {
         });
 
         return response.json({ devs })
+    },
+    
+    async update(request, response){
+        const { id } = request.params;
+        const devs = await Dev.findByIdAndUpdate(id, request.body);
+        return response.json(devs); 
+    },
+
+    async delete(request, response){
+        const { id } = request.params;
+        const devs = await Dev.findByIdAndDelete(id);
+        return response.json({message: "excluido"});
     }
 }
