@@ -1,17 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors');
 
 const app = express();
 
 // MongoDB (não-relacional)
 
 mongoose.connect('mongodb+srv://semana-omnistack:semana-omnistack123@cluster0-rndfj.mongodb.net/week10?retryWrites=true&w=majority', {
-    useCreateIndex: true,
+    // useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
