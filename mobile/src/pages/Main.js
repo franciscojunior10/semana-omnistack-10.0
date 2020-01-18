@@ -3,7 +3,8 @@ import { StyleSheet, Image, View, Text, TextInput, TouchableOpacity }  from 'rea
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 import {MaterialIcons} from '@expo/vector-icons';
-import api from './../services/api';
+import api from '../services/api';
+import { connect, disconnect, subToNewDevs } from '../services/socket';
 
 function Main({ navigation }){
     
@@ -34,6 +35,21 @@ function Main({ navigation }){
         loadInitialPosition();
     }, []);
 
+    useEffect(() => {
+        subToNewDevs(dev => setDevs([...devs, dev]));
+    }, [devs]);
+
+    function setupWebsocket() {
+        disconnect();
+
+        const { latitude, longitude } = currentRegion;
+        connect(
+            latitude,
+            longitude,
+            techs,
+        );
+    }
+
     async function loadDevs() {
         const { latitude, longitude } = currentRegion;
 
@@ -46,6 +62,7 @@ function Main({ navigation }){
         });
 
         setDevs(response.data.devs);
+        setupWebsocket();
     }
 
     function handleRegionChanged(region) {
@@ -150,7 +167,7 @@ style = StyleSheet.create({
     loadButton: {
         width: 50,
         height: 50,
-        backgroundColor: '#8E4Dff',
+        backgroundColor: '#0a9be8',
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: "center",
