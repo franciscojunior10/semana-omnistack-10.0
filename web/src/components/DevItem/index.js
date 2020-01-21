@@ -2,10 +2,11 @@ import React from 'react';
 import './styles.css';
 import api from './../../services/api';
 
-function DevItem({ dev }) {
+function DevItem({ dev, loadDevs }) {
     async function excluirConta(e){
         e.preventDefault();
-        const response = api.delete(`devs/${dev._id}`);
+        await api.delete(`devs/${dev._id}`);
+        await loadDevs();
     }
     
     return (
