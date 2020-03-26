@@ -1,5 +1,5 @@
 # Semana OmniStack 10.0 🚀
-##### Resultado final da aplicação
+##### Resultado final da aplicação :heavy_check_mark:
 
 # Front-end:
 ##### Desenvolvido com [React](https://pt-br.reactjs.org/)
